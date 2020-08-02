@@ -31,9 +31,9 @@ local.properties
 
 # node.js
 #
-Crono/node_modules/
-Crono/npm-debug.log
-Crono/yarn-error.log
+Navigator/node_modules/
+Navigator/npm-debug.log
+Navigator/yarn-error.log
 
 # BUCK
 buck-out/
@@ -56,4 +56,4 @@ buck-out/
 *.jsbundle
 
 # CocoaPods
-/Crono/ios/Pods/
+/Navigator/ios/Pods/
