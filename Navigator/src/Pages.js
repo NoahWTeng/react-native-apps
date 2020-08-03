@@ -1,31 +1,24 @@
 import React from 'react';
-import {View, StyleSheet, Text, Button} from 'react-native';
+import {View, Text, Button, StyleSheet} from 'react-native';
+import SafeAreaView from 'react-native-safe-area-view';
+
 import {AuthContext} from './AuthContext';
-
 const styles = StyleSheet.create({
-  body: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  container: {flex: 1, justifyContent: 'center', alignItems: 'center'},
 });
-
-function ScreenContainer({children}) {
-  return <View style={styles.body}>{children}</View>;
-}
 
 export function SignIn({navigation}) {
   const {signIn} = React.useContext(AuthContext);
 
   return (
-    <ScreenContainer>
-      <Text>Sign In Pages</Text>
+    <SafeAreaView style={[styles.container, {backgroundColor: '#ecf0f1'}]}>
+      <Text>Sign In Pages Test</Text>
       <Button title="Sign In" onPress={() => signIn()} />
       <Button
         title="Create Account"
         onPress={() => navigation.push('CreateAccount')}
       />
-    </ScreenContainer>
+    </SafeAreaView>
   );
 }
 
@@ -37,34 +30,34 @@ function SignOut({navigation}) {
 
 export function CreateAccount({navigation}) {
   return (
-    <ScreenContainer>
+    <View>
       <Text>Create Account</Text>
       <Button title="Sign Up" onPress={() => alert('Sign Up')} />
-    </ScreenContainer>
+    </View>
   );
 }
 
 export function Home({}) {
   return (
-    <ScreenContainer>
+    <View>
       <Text>Home</Text>
       <SignOut />
-    </ScreenContainer>
+    </View>
   );
 }
 
 export function Profile({}) {
   return (
-    <ScreenContainer>
+    <View>
       <Text>Profile</Text>
-    </ScreenContainer>
+    </View>
   );
 }
 
 export function Loading() {
   return (
-    <ScreenContainer>
+    <View>
       <Text>Loading...</Text>
-    </ScreenContainer>
+    </View>
   );
 }

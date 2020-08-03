@@ -4,6 +4,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {StatusBar} from 'react-native';
+
 import {SignIn, CreateAccount, Home, Profile, Loading} from './Pages';
 import {AuthContext} from './AuthContext';
 
@@ -59,27 +62,31 @@ function App() {
 
   return (
     <AuthContext.Provider value={authContext}>
-      <NavigationContainer>
-        {isAuth ? (
-          <Drawers.Navigator>
-            <Drawers.Screen name="Home" component={TabsScreen} />
-            <Drawers.Screen name="Profile" component={ProfileStackScreen} />
-          </Drawers.Navigator>
-        ) : (
-          <AuthStack.Navigator>
-            <AuthStack.Screen
-              name="SignIn"
-              component={SignIn}
-              options={{title: 'Sign In'}}
-            />
-            <AuthStack.Screen
-              name="CreateAccount"
-              component={CreateAccount}
-              options={{title: 'Create Account'}}
-            />
-          </AuthStack.Navigator>
-        )}
-      </NavigationContainer>
+      <SafeAreaProvider>
+        <StatusBar barStyle="dark-content" backgroundColor="#ecf0f1" />
+
+        <NavigationContainer>
+          {isAuth ? (
+            <Drawers.Navigator>
+              <Drawers.Screen name="Home" component={TabsScreen} />
+              <Drawers.Screen name="Profile" component={ProfileStackScreen} />
+            </Drawers.Navigator>
+          ) : (
+            <AuthStack.Navigator>
+              <AuthStack.Screen
+                name="SignIn"
+                component={SignIn}
+                options={{title: 'Sign In'}}
+              />
+              <AuthStack.Screen
+                name="CreateAccount"
+                component={CreateAccount}
+                options={{title: 'Create Account'}}
+              />
+            </AuthStack.Navigator>
+          )}
+        </NavigationContainer>
+      </SafeAreaProvider>
     </AuthContext.Provider>
   );
 }
