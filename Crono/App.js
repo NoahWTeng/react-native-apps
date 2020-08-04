@@ -97,7 +97,7 @@ function WatchControl({addRecord, clearRecord, startWatch, stopWatch}) {
 function WatchRecord({record}) {
   return (
     <View style={styles.watchRecordContainer}>
-      <Text style={styles.recordText}>RECORD</Text>
+      <Text style={styles.recordText}>TIMES</Text>
       <FlatList
         data={record}
         renderItem={({item}) => {
