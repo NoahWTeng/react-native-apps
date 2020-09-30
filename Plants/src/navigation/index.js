@@ -1,1 +1,1 @@
-export * from './Screens';
+export * from './Main';

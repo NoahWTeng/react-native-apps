@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {SafeAreaView, View, Text, StatusBar} from 'react-native';
+import {SafeAreaView, StatusBar, Image} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 
-import {appStyles} from './theme';
-import {themes} from './constants';
+import {MainScreen} from './navigation';
 
 const wait = (timeout) =>
   new Promise((resolve) => {
@@ -15,24 +15,31 @@ export function App() {
   useEffect(() => {
     wait(3000).then(() => setLoading(false));
 
-    return () => {};
+    return () => {
+      setLoading(true);
+    };
   }, []);
 
   if (loading) {
     return (
-      <View style={appStyles.body}>
-        <Text>Loading</Text>
-      </View>
+      <Image
+        source={require('./assets/splash.png')}
+        style={{
+          width: '100%',
+          height: '100%',
+          resizeMode: 'center',
+        }}
+      />
     );
   }
 
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <View style={appStyles.body}>
-          <Text>Plants App</Text>
-        </View>
+      <SafeAreaView style={{flex: 1}}>
+        <NavigationContainer>
+          <MainScreen />
+        </NavigationContainer>
       </SafeAreaView>
     </>
   );
