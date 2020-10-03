@@ -15,10 +15,11 @@ const sizes = {
   font: 14,
   radius: 6,
   padding: 25,
+  paddingBottomScroll: 25,
 
   // font sizes
   h1: 26,
-  h2: 20,
+  h2: 22,
   h3: 18,
   title: 18,
   header: 16,

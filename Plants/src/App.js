@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {SafeAreaView, StatusBar, Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-
-import {MainScreen} from './navigation';
+import {MainNavigation} from './navigation';
+import {Block} from './components';
 
 const wait = (timeout) =>
   new Promise((resolve) => {
@@ -22,14 +22,16 @@ export function App() {
 
   if (loading) {
     return (
-      <Image
-        source={require('./assets/splash.png')}
-        style={{
-          width: '100%',
-          height: '100%',
-          resizeMode: 'center',
-        }}
-      />
+      <Block>
+        <Image
+          source={require('./assets/splash.png')}
+          style={{
+            width: '100%',
+            height: '100%',
+            resizeMode: 'center',
+          }}
+        />
+      </Block>
     );
   }
 
@@ -38,7 +40,7 @@ export function App() {
       <StatusBar barStyle="dark-content" />
       <SafeAreaView style={{flex: 1}}>
         <NavigationContainer>
-          <MainScreen />
+          <MainNavigation />
         </NavigationContainer>
       </SafeAreaView>
     </>
