@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {Image} from 'react-native';
 
 import {
-  Browser,
+  Browse,
   Explore,
   Login,
   Product,
@@ -49,10 +49,13 @@ function WelcomeStacks(props) {
 
   return stacks;
 }
-function BrowserStack() {
+function BrowseStack() {
   const stacks = {
-    name: 'Browser',
-    component: Browser,
+    name: 'Browse',
+    component: Browse,
+    options: {
+      ...notTitle,
+    },
   };
 
   return stacks;
@@ -123,7 +126,7 @@ function ForgotStack() {
 
 const stacks = [
   WelcomeStacks(),
-  BrowserStack(),
+  BrowseStack(),
   ExploreStack(),
   LoginStack(),
   ProductStack(),

@@ -1,4 +1,4 @@
-export * from './Browser';
+export * from './Browse';
 export * from './Explore';
 export * from './Product';
 export * from './Login';

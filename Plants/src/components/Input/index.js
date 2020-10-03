@@ -28,11 +28,11 @@ export function Input(props) {
   const renderLabel = () => {
     return (
       <Block flex={false}>
-        {label ? (
+        {label && (
           <Text gray2={!error} accent={error}>
             {label}
           </Text>
-        ) : null}
+        )}
       </Block>
     );
   };

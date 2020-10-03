@@ -19,8 +19,8 @@ export function Login(props) {
   const navigation = useNavigation();
 
   const [state, changeState] = useState({
-    email: null,
-    password: null,
+    email: VALID_EMAIL,
+    password: VALID_PASSWORD,
     ipAddress: null,
     broadcast: null,
     ipv4Address: null,
@@ -58,7 +58,7 @@ export function Login(props) {
       changeState((s) => ({...s, errors, loading: false}));
 
       if (!errors.length) {
-        navigation.navigate('Browser');
+        navigation.navigate('Browse');
       }
     }, 2000);
   };

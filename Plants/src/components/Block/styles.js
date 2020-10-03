@@ -47,4 +47,5 @@ export const styles = StyleSheet.create({
   white: {backgroundColor: colors.white},
   gray: {backgroundColor: colors.gray},
   gray2: {backgroundColor: colors.gray2},
+  badge: {backgroundColor: 'rgba(41,216,143,0.20)'},
 });

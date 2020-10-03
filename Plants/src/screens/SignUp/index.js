@@ -45,7 +45,7 @@ export function SignUp(props) {
             {
               text: 'Continue',
               onPress: () => {
-                navigation.navigate('Browser');
+                navigation.navigate('Browse');
               },
             },
           ],

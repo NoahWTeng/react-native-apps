@@ -16,6 +16,7 @@ const sizes = {
   radius: 6,
   padding: 25,
   paddingBottomScroll: 25,
+  border: 50,
 
   // font sizes
   h1: 26,
