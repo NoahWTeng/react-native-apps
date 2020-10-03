@@ -2,8 +2,6 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Image} from 'react-native';
 
-const Stack = createStackNavigator();
-
 import {
   Browser,
   Explore,
@@ -15,6 +13,29 @@ import {
   Forgot,
 } from '../screens';
 import {sizes, colors} from '../constants';
+
+const notTitle = {
+  title: null,
+  headerBackTitleStyle: {display: 'none', backgroundColor: 'red'},
+  headerBackImage: () => <Image source={require('../assets/icons/back.png')} />,
+  headerLeftContainerStyle: {
+    marginLeft: sizes.base * 2,
+    alignItems: 'center',
+    paddingRight: sizes.base,
+  },
+  headerRightContainerStyle: {
+    alignItems: 'center',
+    paddingRight: sizes.base,
+  },
+  headerStyle: {
+    height: sizes.base * 4,
+    backgroundColor: colors.white,
+    elevation: 0,
+    shadowColor: 'transparent',
+  },
+};
+
+const Stack = createStackNavigator();
 
 function WelcomeStacks(props) {
   const stacks = {
@@ -51,26 +72,7 @@ function LoginStack() {
     name: 'Login',
     component: Login,
     options: {
-      title: null,
-      headerBackTitleStyle: {display: 'none', backgroundColor: 'red'},
-      headerBackImage: () => (
-        <Image source={require('../assets/icons/back.png')} />
-      ),
-      headerLeftContainerStyle: {
-        marginLeft: sizes.base * 2,
-        alignItems: 'center',
-        paddingRight: sizes.base,
-      },
-      headerRightContainerStyle: {
-        alignItems: 'center',
-        paddingRight: sizes.base,
-      },
-      headerStyle: {
-        height: sizes.base * 4,
-        backgroundColor: colors.white,
-        elevation: 0,
-        shadowColor: 'transparent',
-      },
+      ...notTitle,
     },
   };
 
@@ -99,6 +101,9 @@ function SignUpStack() {
   const stacks = {
     name: 'SignUp',
     component: SignUp,
+    options: {
+      ...notTitle,
+    },
   };
 
   return stacks;
@@ -108,6 +113,9 @@ function ForgotStack() {
   const stacks = {
     name: 'Forgot',
     component: Forgot,
+    options: {
+      ...notTitle,
+    },
   };
 
   return stacks;

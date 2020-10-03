@@ -40,9 +40,7 @@ export function Input(props) {
   const renderToggle = () => {
     if (!secure) return null;
     return (
-      <Button
-        style={styles.toggle}
-        onPress={() => changeToggle({toggle: !toggle})}>
+      <Button style={styles.toggle} onPress={() => changeToggle(!toggle)}>
         {rightLabel ? (
           rightLabel
         ) : (

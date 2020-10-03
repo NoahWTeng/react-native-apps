@@ -17,6 +17,7 @@ export function App() {
 
     return () => {
       setLoading(true);
+      clearTimeout(wait);
     };
   }, []);
 
