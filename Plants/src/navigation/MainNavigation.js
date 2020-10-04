@@ -1,6 +1,9 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Image} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+
+import {Block, Button} from '../components';
 
 import {
   Browse,
@@ -17,7 +20,13 @@ import {sizes, colors} from '../constants';
 const notTitle = {
   title: null,
   headerBackTitleStyle: {display: 'none', backgroundColor: 'red'},
-  headerBackImage: () => <Image source={require('../assets/icons/back.png')} />,
+  headerBackImage: () => {
+    return (
+      <Block padding={[15, 0]}>
+        <Image source={require('../assets/icons/back.png')} />
+      </Block>
+    );
+  },
   headerLeftContainerStyle: {
     marginLeft: sizes.base * 2,
     alignItems: 'center',
@@ -25,7 +34,7 @@ const notTitle = {
   },
   headerRightContainerStyle: {
     alignItems: 'center',
-    paddingRight: sizes.base,
+    paddingRight: sizes.base * 2,
   },
   headerStyle: {
     height: sizes.base * 4,
@@ -65,6 +74,9 @@ function ExploreStack() {
   const stacks = {
     name: 'Explore',
     component: Explore,
+    options: {
+      ...notTitle,
+    },
   };
 
   return stacks;
@@ -86,6 +98,18 @@ function ProductStack() {
   const stacks = {
     name: 'Product',
     component: Product,
+    options: {
+      ...notTitle,
+      headerRight: () => (
+        <Button onPress={() => {}}>
+          <Icon
+            name={'ellipsis-horizontal-outline'}
+            size={sizes.base}
+            color={colors.gray}
+          />
+        </Button>
+      ),
+    },
   };
 
   return stacks;
@@ -95,6 +119,9 @@ function SettingStack() {
   const stacks = {
     name: 'Setting',
     component: Setting,
+    options: {
+      ...notTitle,
+    },
   };
 
   return stacks;

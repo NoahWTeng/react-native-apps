@@ -6,14 +6,24 @@ import {Block, Typography as Text, Card, Badge, Button} from '../../components';
 import {sizes, profile, categories} from '../../constants';
 import {styles} from './styles';
 
+const tabs = ['Products', 'Inspirations', 'Shop'];
+
 export function Browse(props) {
   const navigation = useNavigation();
 
   const [state, changeState] = useState({
     active: 'Products',
     profile,
+    categories,
   });
-  const tabs = ['Products', 'Inspirations', 'Shop'];
+
+  const handleTab = (tab) => {
+    const filtered = categories.filter(({tags}) =>
+      tags.includes(tab.toLowerCase()),
+    );
+
+    changeState((s) => ({...s, active: tab, categories: filtered}));
+  };
 
   const renderTaps = (tab) => {
     const {active} = state;
@@ -22,9 +32,9 @@ export function Browse(props) {
     return (
       <TouchableOpacity
         key={`tab-${tab}`}
-        onPress={() => changeState((s) => ({...s, active: tab}))}
+        onPress={() => handleTab(tab)}
         style={[styles.tab, isActive && styles.active]}>
-        <Text title medium gray={!isActive} secondary={isActive}>
+        <Text title size={16} medium gray={!isActive} secondary={isActive}>
           {tab}
         </Text>
       </TouchableOpacity>
@@ -36,7 +46,7 @@ export function Browse(props) {
         <Text h1 bold>
           Browse
         </Text>
-        <Button onPress={() => navigation.navigate('Settings')}>
+        <Button onPress={() => navigation.navigate('Setting')}>
           <Image source={profile.avatar} style={styles.avatar} />
         </Button>
       </Block>
@@ -47,10 +57,11 @@ export function Browse(props) {
         showsVerticalScrollIndicator={false}
         style={{paddingVertical: sizes.base * 2}}>
         <Block flex={false} row space="between" style={styles.categories}>
-          {categories.map((category) => {
+          {state.categories.map((category) => {
             return (
               <TouchableOpacity
-                onPress={() => navigation.navigate('Explore', {category})}>
+                onPress={() => navigation.navigate('Explore', {category})}
+                key={`Card-${category.name}`}>
                 <Card center middle shadow style={styles.category}>
                   <Badge margin={[0, 0, 15]} size={50} color="badge">
                     <Image source={category.image} />

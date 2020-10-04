@@ -46,6 +46,7 @@ export function Block(props) {
     space && {justifyContent: `space-${space}`},
     wrap && {flexWrap: 'wrap'},
     color && styles[color], // predefined styles colors for backgroundColor
+    color && !styles[color] && {backgroundColor: color}, // custom backgroundColor
     style, // rewrite predefined styles
   ];
 
