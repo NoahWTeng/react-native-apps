@@ -19,7 +19,6 @@ import {sizes, colors} from '../constants';
 
 const notTitle = {
   title: null,
-  headerBackTitleStyle: {display: 'none', backgroundColor: 'red'},
   headerBackImage: () => {
     return (
       <Block padding={[15, 0]}>
